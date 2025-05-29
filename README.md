@@ -2,7 +2,12 @@
 
 ## Overview
 
-The MERN Task Distributor App is a full-stack application built with MongoDB, Express.js, React.js (using Vite), and Node.js. It enables an admin to log in, manage agents, upload contact lists in CSV/Excel formats, and distribute tasks evenly among agents. The app demonstrates secure authentication, file handling, and data persistence with a user-friendly interface.
+The MERN Task Distributor App is a full-stack application built with MongoDB, Express.js, React.js (using Vite), and Node.js. It enables an admin to log in, manage agents, upload contact lists in CSV/Excel formats, and distribute tasks evenly among agents. The app demonstrates secure authentication, file handling, and data persistence with a user-friendly interface. This project was developed for an internship assessment.
+
+## Live Demo
+
+The application is deployed and accessible at:  
+[https://task-distributor-admin.onrender.com](https://task-distributor-admin.onrender.com)
 
 ## Features
 
@@ -89,8 +94,8 @@ The MERN Task Distributor App is a full-stack application built with MongoDB, Ex
 ### Usage
 
 1. **Access the App**:
-   - Open `http://localhost:5173` in a browser.
-   - Register and login using email and password.
+   - Open `http://localhost:5173` in a browser or visit the live demo at [https://task-distributor-admin.onrender.com](https://task-distributor-admin.onrender.com).
+   - Register or log in with admin credentials (e.g., Email: `admin@example.com`, Password: `admin123`).
    - Update credentials in MongoDB for production use.
 
 2. **Add Agents**:
@@ -123,6 +128,7 @@ The MERN Task Distributor App is a full-stack application built with MongoDB, Ex
 - **Vite Issues**: Confirm `VITE_API_URL` matches the backend URL and check for CORS errors.
 
 For further assistance, refer to code comments or contact [panyamsathyateja@gmail.com].
+
 
 
 
