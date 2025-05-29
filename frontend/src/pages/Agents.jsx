@@ -1,52 +1,64 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const Agents = () => {
   const [agents, setAgents] = useState([]);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    mobile: '',
-    password: '',
+    name: "",
+    email: "",
+    mobile: "",
+    password: "",
   });
-  const [error, setError] = useState('');
-  const [message, setMessage] = useState('');
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
-  const token = localStorage.getItem('token');
+  // Get token from localStorage
+  const token = localStorage.getItem("token");
 
+  // Fetch agents on component mount
   useEffect(() => {
     const fetchAgents = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/agents`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/agents`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setAgents(res.data);
       } catch (err) {
-        setError('Failed to load agents');
+        setError("Failed to load agents");
       }
     };
 
     if (token) fetchAgents();
   }, [token]);
 
+  // Handle input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Handle form submission
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-    setMessage('');
+    setError("");
+    setMessage("");
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/agents`, formData, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/agents`,
+        formData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setAgents([...agents, res.data]);
-      setMessage('Agent added successfully');
-      setFormData({ name: '', email: '', mobile: '', password: '' });
+      setMessage("Agent added successfully");
+      setFormData({ name: "", email: "", mobile: "", password: "" });
     } catch (err) {
-      setError(err.response?.data?.message || 'Error adding agent');
+      setError(err.response?.data?.message || "Error adding agent");
     }
   };
 
@@ -67,7 +79,6 @@ const Agents = () => {
             Add New Agent
           </h3>
 
-          {/* Inputs grid: single column on small, two columns on md and up */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             <input
               type="text"
@@ -115,45 +126,57 @@ const Agents = () => {
           </button>
 
           {/* Feedback messages */}
-          {error && <p className="text-red-500 font-semibold mt-2 sm:mt-3 text-sm sm:text-base">{error}</p>}
-          {message && <p className="text-green-600 font-semibold mt-2 sm:mt-3 text-sm sm:text-base">{message}</p>}
+          {error && (
+            <p className="text-red-500 font-semibold mt-2 sm:mt-3 text-sm sm:text-base">
+              {error}
+            </p>
+          )}
+          {message && (
+            <p className="text-green-600 font-semibold mt-2 sm:mt-3 text-sm sm:text-base">
+              {message}
+            </p>
+          )}
         </form>
 
         {/* Agents List */}
-<div className="bg-white rounded-xl shadow-md p-3 sm:p-5 overflow-x-auto">
-  <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-3 sm:mb-4">Agent List</h3>
-  <table className="w-full border-collapse min-w-[320px] sm:min-w-full text-xs sm:text-sm">
-    <thead>
-      <tr className="bg-purple-500">
-        <th className="py-1.5 px-2 sm:py-2 sm:px-3 text-left font-semibold text-white rounded-tl-xl">
-          Name
-        </th>
-        <th className="py-1.5 px-2 sm:py-2 sm:px-3 text-left font-semibold text-white">
-          Email
-        </th>
-        <th className="py-1.5 px-2 sm:py-2 sm:px-3 text-left font-semibold text-white rounded-tr-xl">
-          Mobile
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      {agents.map((agent) => (
-        <tr key={agent._id} className="hover:bg-purple-50 transition-colors duration-150">
-          <td className="py-1.5 px-2 sm:py-2 sm:px-3 text-gray-700 border-b border-gray-200">
-            {agent.name}
-          </td>
-          <td className="py-1.5 px-2 sm:py-2 sm:px-3 text-gray-700 border-b border-gray-200">
-            {agent.email}
-          </td>
-          <td className="py-1.5 px-2 sm:py-2 sm:px-3 text-gray-700 border-b border-gray-200">
-            {agent.mobile}
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
-
+        <div className="bg-white rounded-xl shadow-md p-3 sm:p-5 overflow-x-auto">
+          <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-3 sm:mb-4">
+            Agent List
+          </h3>
+          <table className="w-full border-collapse min-w-[320px] sm:min-w-full text-xs sm:text-sm">
+            <thead>
+              <tr className="bg-purple-500">
+                <th className="py-1.5 px-2 sm:py-2 sm:px-3 text-left font-semibold text-white rounded-tl-xl">
+                  Name
+                </th>
+                <th className="py-1.5 px-2 sm:py-2 sm:px-3 text-left font-semibold text-white">
+                  Email
+                </th>
+                <th className="py-1.5 px-2 sm:py-2 sm:px-3 text-left font-semibold text-white rounded-tr-xl">
+                  Mobile
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {agents.map((agent) => (
+                <tr
+                  key={agent._id}
+                  className="hover:bg-purple-50 transition-colors duration-150"
+                >
+                  <td className="py-1.5 px-2 sm:py-2 sm:px-3 text-gray-700 border-b border-gray-200">
+                    {agent.name}
+                  </td>
+                  <td className="py-1.5 px-2 sm:py-2 sm:px-3 text-gray-700 border-b border-gray-200">
+                    {agent.email}
+                  </td>
+                  <td className="py-1.5 px-2 sm:py-2 sm:px-3 text-gray-700 border-b border-gray-200">
+                    {agent.mobile}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </main>
     </div>
   );

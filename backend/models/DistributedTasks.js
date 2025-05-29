@@ -1,10 +1,10 @@
 // models/DistributedTask.js
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const distributedTaskSchema = new mongoose.Schema({
   agentId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Agent', // assumes Agent model
+    ref: "Agent", // assumes Agent model
     required: true,
   },
   FirstName: String,
@@ -12,5 +12,8 @@ const distributedTaskSchema = new mongoose.Schema({
   Notes: String,
 });
 
-const DistributedTask = mongoose.model('DistributedTask', distributedTaskSchema);
+const DistributedTask = mongoose.model(
+  "DistributedTask",
+  distributedTaskSchema
+);
 export default DistributedTask;

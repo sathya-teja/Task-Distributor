@@ -1,14 +1,19 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import Agents from './pages/Agents';
-import Upload from './pages/Upload';
-import Sidebar from './components/Sidebar';
-import DistributedTasks from './pages/DistributedTasks';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Agents from "./pages/Agents";
+import Upload from "./pages/Upload";
+import Sidebar from "./components/Sidebar";
+import DistributedTasks from "./pages/DistributedTasks";
 
 function AppContent() {
   const location = useLocation();
-  const showSidebar = location.pathname !== '/';
+  const showSidebar = location.pathname !== "/";
 
   return (
     <div className="flex min-h-screen w-full bg-gray-50">

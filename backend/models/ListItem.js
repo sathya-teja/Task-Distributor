@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const listItemSchema = new mongoose.Schema({
   firstName: String,
@@ -6,9 +6,9 @@ const listItemSchema = new mongoose.Schema({
   notes: String,
   assignedTo: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Agent'
-  }
+    ref: "Agent",
+  },
 });
 
-const ListItem = mongoose.model('ListItem', listItemSchema);
+const ListItem = mongoose.model("ListItem", listItemSchema);
 export default ListItem;

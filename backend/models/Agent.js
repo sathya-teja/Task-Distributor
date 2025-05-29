@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const agentSchema = new mongoose.Schema({
   name: String,
@@ -7,5 +7,5 @@ const agentSchema = new mongoose.Schema({
   password: String,
 });
 
-const Agent = mongoose.model('Agent', agentSchema);
+const Agent = mongoose.model("Agent", agentSchema);
 export default Agent;
