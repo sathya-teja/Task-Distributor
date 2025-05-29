@@ -117,7 +117,7 @@ The application is deployed and accessible at:
 
 - Ensure MongoDB is running before starting the backend.
 - Validate uploaded files for correct headers (`FirstName`, `Phone`, `Notes`).
-- Refer to the [video demonstration](https://drive.google.com/your-video-link) for a full walkthrough.
+- Refer to the [[video demonstration](https://drive.google.com/your-video-link)](https://drive.google.com/file/d/1jGSeYGcr7wkNm7_bevw0IHpIUbB0alEU/view?usp=sharing) for a full walkthrough.
 - Code includes comments for clarity and maintainability.
 
 ## Troubleshooting
